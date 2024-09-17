@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.0 on win32)" generated="20240909 10:42:54.862" rpa="false" schemaversion="3">
+<suite id="s1" name="DemoAPI" source="c:\Users\citiadmin\Documents\workspace\RobotDemo\Demo\Tests\DemoAPI.robot">
+<test id="s1-t1" name="Authentication Account Admin" line="15">
+<kw name="Send Form Data Request" library="keywords_apidemo">
+<doc>Enviar una solicitud POST con datos codificados en x-www-form-urlencoded</doc>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>my_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240909 10:43:02.266" level="INFO">Creating Session using : alias=my_session, url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240909 10:43:02.266" endtime="20240909 10:43:02.282"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+<arg>Authorization=${AUTH_HEADER}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240909 10:43:02.284" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh'}</msg>
+<status status="PASS" starttime="20240909 10:43:02.283" endtime="20240909 10:43:02.284"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>password=${PASSWORD}</arg>
+<arg>scope=${SCOPE}</arg>
+<arg>username=${USERNAME}</arg>
+<arg>longitude=${LONGITUDE}</arg>
+<arg>latitude=${LATITUDE}</arg>
+<arg>grant_type=${GRANT_TYPE}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240909 10:43:02.286" level="INFO">${data} = {'password': 'v0iKOSpA3bBFiCLaWemt', 'scope': 'use_otp update_info_scope use_accounts use_payments use_profile use_cards use_profile_when_onboarding', 'username': 'admin@snbxciti.com@snbxciti.com', 'l...</msg>
+<status status="PASS" starttime="20240909 10:43:02.284" endtime="20240909 10:43:02.286"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>my_session</arg>
+<arg>/</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20240909 10:43:04.510" level="INFO">POST Request : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
+ path_url=/tenant/snbxciti.com/token/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'Content-Length': '231'} 
+ body=password=v0iKOSpA3bBFiCLaWemt&amp;scope=use_otp+update_info_scope+use_accounts+use_payments+use_profile+use_cards+use_profile_when_onboarding&amp;username=admin%40snbxciti.com%40snbxciti.com&amp;longitude=40.9&amp;latitude=40.8&amp;grant_type=password 
+ </msg>
+<msg timestamp="20240909 10:43:04.510" level="INFO">POST Response : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 09 Sep 2024 16:42:59 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'activityid': '3517eaf1-11a7-4a34-a8e5-6a802f56081e', 'Accept': '*/*', 'X-Forwarded-Proto': 'https', 'X-Forwarded-For': '189.217.207.224', 'Host': 'auth-dev.aurumcore.snbxciti.com', 'Accept-Encoding': 'gzip, deflate, br', 'X-Forwarded-Port': '443', 'X-Amzn-Trace-Id': 'Root=1-66df2591-0903ae9d3bfb82f1083d0589'} 
+ body={"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhZG1pbkBzbmJ4Y2l0aS5jb20iLCJhdXQiOiJBUFBMSUNBVElPTl9VU0VSIiwiYXVkIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsIm5iZiI6MTcyNTkwMDE3OCwiYXpwIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsInNjb3BlIjoidXBkYXRlX2luZm9fc2NvcGUgdXNlX2FjY291bnRzIHVzZV9jYXJkcyB1c2Vfb3RwIHVzZV9wYXltZW50cyB1c2VfcHJvZmlsZSB1c2VfcHJvZmlsZV93aGVuX29uYm9hcmRpbmciLCJpc3MiOiJodHRwczpcL1wvaXMtZGV2LmF1cnVtY29yZS5zbmJ4Y2l0aS5jb206OTQ0M1wvdFwvc25ieGNpdGkuY29tXC9vYXV0aDJcL3Rva2VuIiwiZXhwIjoxNzI1OTAzNzc4LCJpYXQiOjE3MjU5MDAxNzgsImp0aSI6ImVlZjA5ZGM4LWY2MGMtNGM1NS04ZWNjLTFkYzNjNDFhYzczNCJ9.KZCi96cepePHm588wrkeBbgacTj74k6YroB3e_Ln5I2CHwaofVCnOj087JwQhMwgQ0caNroLUvKnhQIFp093Hq0XpsJEsLeTFqxNbw8Jj1aWW1IkzsjTS-wxFtgQX_ptwZc6hm8LHUfk5oUZCwB3XW0RqraPKDqZSCCPrKxEUP6Hs7uWnhLa3y8fYCXxcDQWtGOo4gptK_BxQtKXvMAgo1T1Deg499ngIJ3KnY7-3uKB7uFsn41BMChtAILp5dO0uvAG6qMR689R2IIDKO9w12EhYIUVS7zI0UmAvfAOqrgWKQ5Xug9VursbARm4b0XKDQ8T3B9lg9bbUGrl3E47xQ","scope":"update_info_scope use_accounts use_cards use_otp use_payments use_profile use_profile_when_onboarding","token_type":"Bearer","expires_in":3600} 
+ </msg>
+<msg timestamp="20240909 10:43:04.532" level="INFO">C:\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'auth-dev.aurumcore.snbxciti.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240909 10:43:04.534" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240909 10:43:02.286" endtime="20240909 10:43:04.534"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20240909 10:43:04.537" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240909 10:43:04.535" endtime="20240909 10:43:04.537"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response: ${response.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240909 10:43:04.540" level="INFO">Response: {"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhZG1pbkBzbmJ4Y2l0aS5jb20iLCJhdXQiOiJBUFBMSUNBVElPTl9VU0VSIiwiYXVkIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsIm5iZiI6MTcyNTkwMDE3OCwiYXpwIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsInNjb3BlIjoidXBkYXRlX2luZm9fc2NvcGUgdXNlX2FjY291bnRzIHVzZV9jYXJkcyB1c2Vfb3RwIHVzZV9wYXltZW50cyB1c2VfcHJvZmlsZSB1c2VfcHJvZmlsZV93aGVuX29uYm9hcmRpbmciLCJpc3MiOiJodHRwczpcL1wvaXMtZGV2LmF1cnVtY29yZS5zbmJ4Y2l0aS5jb206OTQ0M1wvdFwvc25ieGNpdGkuY29tXC9vYXV0aDJcL3Rva2VuIiwiZXhwIjoxNzI1OTAzNzc4LCJpYXQiOjE3MjU5MDAxNzgsImp0aSI6ImVlZjA5ZGM4LWY2MGMtNGM1NS04ZWNjLTFkYzNjNDFhYzczNCJ9.KZCi96cepePHm588wrkeBbgacTj74k6YroB3e_Ln5I2CHwaofVCnOj087JwQhMwgQ0caNroLUvKnhQIFp093Hq0XpsJEsLeTFqxNbw8Jj1aWW1IkzsjTS-wxFtgQX_ptwZc6hm8LHUfk5oUZCwB3XW0RqraPKDqZSCCPrKxEUP6Hs7uWnhLa3y8fYCXxcDQWtGOo4gptK_BxQtKXvMAgo1T1Deg499ngIJ3KnY7-3uKB7uFsn41BMChtAILp5dO0uvAG6qMR689R2IIDKO9w12EhYIUVS7zI0UmAvfAOqrgWKQ5Xug9VursbARm4b0XKDQ8T3B9lg9bbUGrl3E47xQ","scope":"update_info_scope use_accounts use_cards use_otp use_payments use_profile use_profile_when_onboarding","token_type":"Bearer","expires_in":3600}</msg>
+<status status="PASS" starttime="20240909 10:43:04.538" endtime="20240909 10:43:04.540"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${auth_token}</var>
+<arg>${response.json()}</arg>
+<arg>access_token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20240909 10:43:04.542" level="INFO">${auth_token} = eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJ...</msg>
+<status status="PASS" starttime="20240909 10:43:04.540" endtime="20240909 10:43:04.542"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Auth Token: ${auth_token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240909 10:43:04.543" level="INFO">Auth Token: eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhZG1pbkBzbmJ4Y2l0aS5jb20iLCJhdXQiOiJBUFBMSUNBVElPTl9VU0VSIiwiYXVkIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsIm5iZiI6MTcyNTkwMDE3OCwiYXpwIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsInNjb3BlIjoidXBkYXRlX2luZm9fc2NvcGUgdXNlX2FjY291bnRzIHVzZV9jYXJkcyB1c2Vfb3RwIHVzZV9wYXltZW50cyB1c2VfcHJvZmlsZSB1c2VfcHJvZmlsZV93aGVuX29uYm9hcmRpbmciLCJpc3MiOiJodHRwczpcL1wvaXMtZGV2LmF1cnVtY29yZS5zbmJ4Y2l0aS5jb206OTQ0M1wvdFwvc25ieGNpdGkuY29tXC9vYXV0aDJcL3Rva2VuIiwiZXhwIjoxNzI1OTAzNzc4LCJpYXQiOjE3MjU5MDAxNzgsImp0aSI6ImVlZjA5ZGM4LWY2MGMtNGM1NS04ZWNjLTFkYzNjNDFhYzczNCJ9.KZCi96cepePHm588wrkeBbgacTj74k6YroB3e_Ln5I2CHwaofVCnOj087JwQhMwgQ0caNroLUvKnhQIFp093Hq0XpsJEsLeTFqxNbw8Jj1aWW1IkzsjTS-wxFtgQX_ptwZc6hm8LHUfk5oUZCwB3XW0RqraPKDqZSCCPrKxEUP6Hs7uWnhLa3y8fYCXxcDQWtGOo4gptK_BxQtKXvMAgo1T1Deg499ngIJ3KnY7-3uKB7uFsn41BMChtAILp5dO0uvAG6qMR689R2IIDKO9w12EhYIUVS7zI0UmAvfAOqrgWKQ5Xug9VursbARm4b0XKDQ8T3B9lg9bbUGrl3E47xQ</msg>
+<status status="PASS" starttime="20240909 10:43:04.543" endtime="20240909 10:43:04.543"/>
+</kw>
+<status status="PASS" starttime="20240909 10:43:02.264" endtime="20240909 10:43:04.543"/>
+</kw>
+<status status="PASS" starttime="20240909 10:43:02.263" endtime="20240909 10:43:04.545"/>
+</test>
+<test id="s1-t2" name="Authentication Account" line="17">
+<kw name="Send Form Data Request New Account" library="keywords_apidemo">
+<doc>Enviar una solicitud POST con datos codificados en x-www-form-urlencoded</doc>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>my_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240909 10:43:04.557" level="INFO">Creating Session using : alias=my_session, url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240909 10:43:04.557" endtime="20240909 10:43:04.558"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+<arg>Authorization=${AUTH_HEADER}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240909 10:43:04.559" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh'}</msg>
+<status status="PASS" starttime="20240909 10:43:04.558" endtime="20240909 10:43:04.559"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>password=hhbIaZnOPaa0V+2rOk6+LQ==</arg>
+<arg>scope=${SCOPE}</arg>
+<arg>username=test_aurumu8qoie@yopmail.com@snbxciti.com</arg>
+<arg>longitude=${LONGITUDE}</arg>
+<arg>latitude=${LATITUDE}</arg>
+<arg>grant_type=${GRANT_TYPE}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240909 10:43:04.561" level="INFO">${data} = {'password': 'hhbIaZnOPaa0V+2rOk6+LQ==', 'scope': 'use_otp update_info_scope use_accounts use_payments use_profile use_cards use_profile_when_onboarding', 'username': 'test_aurumu8qoie@yopmail.com@snb...</msg>
+<status status="PASS" starttime="20240909 10:43:04.560" endtime="20240909 10:43:04.561"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>my_session</arg>
+<arg>/</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20240909 10:43:05.301" level="INFO">POST Request : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
+ path_url=/tenant/snbxciti.com/token/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'Content-Length': '253'} 
+ body=password=hhbIaZnOPaa0V%2B2rOk6%2BLQ%3D%3D&amp;scope=use_otp+update_info_scope+use_accounts+use_payments+use_profile+use_cards+use_profile_when_onboarding&amp;username=test_aurumu8qoie%40yopmail.com%40snbxciti.com&amp;longitude=40.9&amp;latitude=40.8&amp;grant_type=password 
+ </msg>
+<msg timestamp="20240909 10:43:05.301" level="INFO">POST Response : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 09 Sep 2024 16:42:59 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'activityid': '5a8a4c8a-8807-4422-9c80-4cf856853247', 'Accept': '*/*', 'X-Forwarded-Proto': 'https', 'X-Forwarded-For': '189.217.207.224', 'Host': 'auth-dev.aurumcore.snbxciti.com', 'Accept-Encoding': 'gzip, deflate, br', 'X-Forwarded-Port': '443', 'X-Amzn-Trace-Id': 'Root=1-66df2593-58ff399a69fa13cd76882b69'} 
+ body={"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxNzksImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc3OSwiaWF0IjoxNzI1OTAwMTc5LCJqdGkiOiJkZTZhMjYzOC0zNWUxLTQwYjEtYTg3OS1kMWQ2NzY0ZTRlM2UifQ.S1B5ZkbxPpw-hz7aqB7izZAHHvpl_zbWiRKzyyd3_L0f1lWZF0l0U9LAcmd8cAvD3Os4Z3Xjm_bhjX56VRnwMcwC7pBBDEUrT1WUrilhY70pgeAMg-B0A4vD33GXTNarkHCaD0ortpyNso36SImk8zjEXLhBHFwnUgpp1zVeHlGtsoMr9OKrBkEJiGvl2aGhZEZBAoUFeqzEoOS4lBJR3DHx6bglTbdHG-W5JjtI1xJF-QLQvrm5PYHxENoqfe1TwD4Hqkp6BYRJk9-Itfrq9Yab66LLkiaI9RLKM0iK3y4qfMtqOWie-vby8jv_GdITID59fJ7Rh3nhwFotkZBA-w","scope":"update_info_scope use_otp use_profile_when_onboarding","token_type":"Bearer","expires_in":3600} 
+ </msg>
+<msg timestamp="20240909 10:43:05.301" level="INFO">C:\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'auth-dev.aurumcore.snbxciti.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240909 10:43:05.302" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240909 10:43:04.562" endtime="20240909 10:43:05.303"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20240909 10:43:05.304" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240909 10:43:05.303" endtime="20240909 10:43:05.304"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response: ${response.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240909 10:43:05.305" level="INFO">Response: {"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxNzksImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc3OSwiaWF0IjoxNzI1OTAwMTc5LCJqdGkiOiJkZTZhMjYzOC0zNWUxLTQwYjEtYTg3OS1kMWQ2NzY0ZTRlM2UifQ.S1B5ZkbxPpw-hz7aqB7izZAHHvpl_zbWiRKzyyd3_L0f1lWZF0l0U9LAcmd8cAvD3Os4Z3Xjm_bhjX56VRnwMcwC7pBBDEUrT1WUrilhY70pgeAMg-B0A4vD33GXTNarkHCaD0ortpyNso36SImk8zjEXLhBHFwnUgpp1zVeHlGtsoMr9OKrBkEJiGvl2aGhZEZBAoUFeqzEoOS4lBJR3DHx6bglTbdHG-W5JjtI1xJF-QLQvrm5PYHxENoqfe1TwD4Hqkp6BYRJk9-Itfrq9Yab66LLkiaI9RLKM0iK3y4qfMtqOWie-vby8jv_GdITID59fJ7Rh3nhwFotkZBA-w","scope":"update_info_scope use_otp use_profile_when_onboarding","token_type":"Bearer","expires_in":3600}</msg>
+<status status="PASS" starttime="20240909 10:43:05.305" endtime="20240909 10:43:05.305"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${auth_token}</var>
+<arg>${response.json()}</arg>
+<arg>access_token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20240909 10:43:05.306" level="INFO">${auth_token} = eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJ...</msg>
+<status status="PASS" starttime="20240909 10:43:05.306" endtime="20240909 10:43:05.307"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Auth Token: ${auth_token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240909 10:43:05.307" level="INFO">Auth Token: eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxNzksImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc3OSwiaWF0IjoxNzI1OTAwMTc5LCJqdGkiOiJkZTZhMjYzOC0zNWUxLTQwYjEtYTg3OS1kMWQ2NzY0ZTRlM2UifQ.S1B5ZkbxPpw-hz7aqB7izZAHHvpl_zbWiRKzyyd3_L0f1lWZF0l0U9LAcmd8cAvD3Os4Z3Xjm_bhjX56VRnwMcwC7pBBDEUrT1WUrilhY70pgeAMg-B0A4vD33GXTNarkHCaD0ortpyNso36SImk8zjEXLhBHFwnUgpp1zVeHlGtsoMr9OKrBkEJiGvl2aGhZEZBAoUFeqzEoOS4lBJR3DHx6bglTbdHG-W5JjtI1xJF-QLQvrm5PYHxENoqfe1TwD4Hqkp6BYRJk9-Itfrq9Yab66LLkiaI9RLKM0iK3y4qfMtqOWie-vby8jv_GdITID59fJ7Rh3nhwFotkZBA-w</msg>
+<status status="PASS" starttime="20240909 10:43:05.307" endtime="20240909 10:43:05.308"/>
+</kw>
+<status status="PASS" starttime="20240909 10:43:04.556" endtime="20240909 10:43:05.308"/>
+</kw>
+<kw name="GetAddress" library="keywords_apidemo">
+<doc>Obtiene la direccion de la cuenta loggeada</doc>
+<kw name="Send Form Data Request New Account" library="keywords_apidemo">
+<var>${auth_token}</var>
+<doc>Enviar una solicitud POST con datos codificados en x-www-form-urlencoded</doc>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>my_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240909 10:43:05.310" level="INFO">Creating Session using : alias=my_session, url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240909 10:43:05.309" endtime="20240909 10:43:05.310"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+<arg>Authorization=${AUTH_HEADER}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240909 10:43:05.311" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh'}</msg>
+<status status="PASS" starttime="20240909 10:43:05.310" endtime="20240909 10:43:05.311"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>password=hhbIaZnOPaa0V+2rOk6+LQ==</arg>
+<arg>scope=${SCOPE}</arg>
+<arg>username=test_aurumu8qoie@yopmail.com@snbxciti.com</arg>
+<arg>longitude=${LONGITUDE}</arg>
+<arg>latitude=${LATITUDE}</arg>
+<arg>grant_type=${GRANT_TYPE}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240909 10:43:05.312" level="INFO">${data} = {'password': 'hhbIaZnOPaa0V+2rOk6+LQ==', 'scope': 'use_otp update_info_scope use_accounts use_payments use_profile use_cards use_profile_when_onboarding', 'username': 'test_aurumu8qoie@yopmail.com@snb...</msg>
+<status status="PASS" starttime="20240909 10:43:05.311" endtime="20240909 10:43:05.312"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>my_session</arg>
+<arg>/</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20240909 10:43:05.938" level="INFO">POST Request : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
+ path_url=/tenant/snbxciti.com/token/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'Content-Length': '253'} 
+ body=password=hhbIaZnOPaa0V%2B2rOk6%2BLQ%3D%3D&amp;scope=use_otp+update_info_scope+use_accounts+use_payments+use_profile+use_cards+use_profile_when_onboarding&amp;username=test_aurumu8qoie%40yopmail.com%40snbxciti.com&amp;longitude=40.9&amp;latitude=40.8&amp;grant_type=password 
+ </msg>
+<msg timestamp="20240909 10:43:05.938" level="INFO">POST Response : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 09 Sep 2024 16:43:00 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'activityid': 'c3a5dd01-007d-41a8-982f-020651e83984', 'Accept': '*/*', 'X-Forwarded-Proto': 'https', 'X-Forwarded-For': '189.217.207.224', 'Host': 'auth-dev.aurumcore.snbxciti.com', 'Accept-Encoding': 'gzip, deflate, br', 'X-Forwarded-Port': '443', 'X-Amzn-Trace-Id': 'Root=1-66df2594-4a6e04e61918b2a430bc08b3'} 
+ body={"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxODAsImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc4MCwiaWF0IjoxNzI1OTAwMTgwLCJqdGkiOiI3MDVjMjUwNC1lNzRmLTRjN2QtOTZhNC00NmE0ZWY2ZmU5MTEifQ.Uzflpym0480jJmYA5fS8K1xqgdU4bJ7uJcvtKCx4jW-JAahy0GxombVsuvMqsRQ4VmXv4oCRDqIAgPdQNv6BIfCRHoQf64eaLZ4iAqe4b05jzEhIIegzIkVy7sww58HWZXtEF9PVWYScm3H2rEEtqm2GoHOI-jq09HJjMUEFal_vlIBjEnL_40zM67A7H_c9w_t_vz6qE5lGCOMQ1JAhZzXzfYSZILyzouPKtrXfYwcrhfVivvL7AzaLbZ9fSCtlzCe6lKNkkflb57EhRQAqN6_I24VEzrRC0yad6zXEkFRBE8_j2j5k07PU6s8S-0fUvQw1WagXg1410WTCjHzKEQ","scope":"update_info_scope use_otp use_profile_when_onboarding","token_type":"Bearer","expires_in":3600} 
+ </msg>
+<msg timestamp="20240909 10:43:05.939" level="INFO">C:\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'auth-dev.aurumcore.snbxciti.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240909 10:43:05.940" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240909 10:43:05.312" endtime="20240909 10:43:05.941"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20240909 10:43:05.943" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240909 10:43:05.941" endtime="20240909 10:43:05.944"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response: ${response.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240909 10:43:05.946" level="INFO">Response: {"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxODAsImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc4MCwiaWF0IjoxNzI1OTAwMTgwLCJqdGkiOiI3MDVjMjUwNC1lNzRmLTRjN2QtOTZhNC00NmE0ZWY2ZmU5MTEifQ.Uzflpym0480jJmYA5fS8K1xqgdU4bJ7uJcvtKCx4jW-JAahy0GxombVsuvMqsRQ4VmXv4oCRDqIAgPdQNv6BIfCRHoQf64eaLZ4iAqe4b05jzEhIIegzIkVy7sww58HWZXtEF9PVWYScm3H2rEEtqm2GoHOI-jq09HJjMUEFal_vlIBjEnL_40zM67A7H_c9w_t_vz6qE5lGCOMQ1JAhZzXzfYSZILyzouPKtrXfYwcrhfVivvL7AzaLbZ9fSCtlzCe6lKNkkflb57EhRQAqN6_I24VEzrRC0yad6zXEkFRBE8_j2j5k07PU6s8S-0fUvQw1WagXg1410WTCjHzKEQ","scope":"update_info_scope use_otp use_profile_when_onboarding","token_type":"Bearer","expires_in":3600}</msg>
+<status status="PASS" starttime="20240909 10:43:05.944" endtime="20240909 10:43:05.947"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${auth_token}</var>
+<arg>${response.json()}</arg>
+<arg>access_token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20240909 10:43:05.949" level="INFO">${auth_token} = eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJ...</msg>
+<status status="PASS" starttime="20240909 10:43:05.947" endtime="20240909 10:43:05.950"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Auth Token: ${auth_token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240909 10:43:05.951" level="INFO">Auth Token: eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxODAsImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc4MCwiaWF0IjoxNzI1OTAwMTgwLCJqdGkiOiI3MDVjMjUwNC1lNzRmLTRjN2QtOTZhNC00NmE0ZWY2ZmU5MTEifQ.Uzflpym0480jJmYA5fS8K1xqgdU4bJ7uJcvtKCx4jW-JAahy0GxombVsuvMqsRQ4VmXv4oCRDqIAgPdQNv6BIfCRHoQf64eaLZ4iAqe4b05jzEhIIegzIkVy7sww58HWZXtEF9PVWYScm3H2rEEtqm2GoHOI-jq09HJjMUEFal_vlIBjEnL_40zM67A7H_c9w_t_vz6qE5lGCOMQ1JAhZzXzfYSZILyzouPKtrXfYwcrhfVivvL7AzaLbZ9fSCtlzCe6lKNkkflb57EhRQAqN6_I24VEzrRC0yad6zXEkFRBE8_j2j5k07PU6s8S-0fUvQw1WagXg1410WTCjHzKEQ</msg>
+<status status="PASS" starttime="20240909 10:43:05.950" endtime="20240909 10:43:05.951"/>
+</kw>
+<msg timestamp="20240909 10:43:05.952" level="INFO">${auth_token} = eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJ...</msg>
+<status status="PASS" starttime="20240909 10:43:05.309" endtime="20240909 10:43:05.952"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>my_session</arg>
+<arg>${URLGET}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240909 10:43:05.953" level="INFO">Creating Session using : alias=my_session, url=https://api-dev.aurumcore.snbxciti.com:9095/t/snbxciti.com/onboarding/1.0.0/getAddress, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240909 10:43:05.952" endtime="20240909 10:43:05.953"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+<arg>Authorization=Bearer ${auth_token}</arg>
+<arg>x-signature=${SIGNATURE}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240909 10:43:05.955" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XW...</msg>
+<status status="PASS" starttime="20240909 10:43:05.954" endtime="20240909 10:43:05.955"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${full_url}</var>
+<arg>${URLGET}${QUERY_PARAMS}</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20240909 10:43:05.956" level="INFO">${full_url} = https://api-dev.aurumcore.snbxciti.com:9095/t/snbxciti.com/onboarding/1.0.0/getAddress?pc=74325</msg>
+<status status="PASS" starttime="20240909 10:43:05.955" endtime="20240909 10:43:05.956"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>my_session</arg>
+<arg>${full_url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240909 10:43:08.364" level="INFO">GET Request : url=https://api-dev.aurumcore.snbxciti.com:9095/t/snbxciti.com/onboarding/1.0.0/getAddress?pc=74325 
+ path_url=/t/snbxciti.com/onboarding/1.0.0/getAddress?pc=74325 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxODAsImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc4MCwiaWF0IjoxNzI1OTAwMTgwLCJqdGkiOiI3MDVjMjUwNC1lNzRmLTRjN2QtOTZhNC00NmE0ZWY2ZmU5MTEifQ.Uzflpym0480jJmYA5fS8K1xqgdU4bJ7uJcvtKCx4jW-JAahy0GxombVsuvMqsRQ4VmXv4oCRDqIAgPdQNv6BIfCRHoQf64eaLZ4iAqe4b05jzEhIIegzIkVy7sww58HWZXtEF9PVWYScm3H2rEEtqm2GoHOI-jq09HJjMUEFal_vlIBjEnL_40zM67A7H_c9w_t_vz6qE5lGCOMQ1JAhZzXzfYSZILyzouPKtrXfYwcrhfVivvL7AzaLbZ9fSCtlzCe6lKNkkflb57EhRQAqN6_I24VEzrRC0yad6zXEkFRBE8_j2j5k07PU6s8S-0fUvQw1WagXg1410WTCjHzKEQ', 'x-signature': '39tlgG13CX79kLVATwkir+4benvbjcwyvyA0e8La7jA='} 
+ body=None 
+ </msg>
+<msg timestamp="20240909 10:43:08.365" level="INFO">GET Response : url=https://api-dev.aurumcore.snbxciti.com:9095/t/snbxciti.com/onboarding/1.0.0/getAddress?pc=74325 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 09 Sep 2024 16:43:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'server': 'envoy'} 
+ body={"responseCode":"0","responseMessage":"Proceso completo y exitoso.","responseSubject":"Éxito","messageType":1,"transId":"412409091143010001","data":[{"idState":"21","nameState":"PUEBLA","idCity":"21-125","nameCity":"San Gregorio Atzompa","idSuburb":"21-125-1571","nameSuburb":"Chipilo de Francisco Javier Mina","postalCode":"74325"}],"accountholderId":null} 
+ </msg>
+<msg timestamp="20240909 10:43:08.365" level="INFO">C:\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-dev.aurumcore.snbxciti.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240909 10:43:08.366" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240909 10:43:05.956" endtime="20240909 10:43:08.367"/>
+</kw>
+<status status="PASS" starttime="20240909 10:43:05.309" endtime="20240909 10:43:08.367"/>
+</kw>
+<status status="PASS" starttime="20240909 10:43:04.555" endtime="20240909 10:43:08.368"/>
+</test>
+<doc>Pruebas DEMO API</doc>
+<status status="PASS" starttime="20240909 10:42:54.905" endtime="20240909 10:43:08.371"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="DemoAPI">DemoAPI</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
