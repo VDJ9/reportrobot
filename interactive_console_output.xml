@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.0 on win32)" generated="20240905 00:22:15.540" rpa="false" schemaversion="3">
-<suite id="s1" name="Robot Interactive Console" source="c:\Users\citiadmin\.vscode\extensions\robocorp.robotframework-lsp-1.12.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<robot generator="Robot 6.0.2 (Python 3.11.0 on win32)" generated="20241010 10:33:31.763" rpa="false" schemaversion="3">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\citiadmin\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Send Form Data Request">
-<msg timestamp="20240905 00:22:17.277" level="FAIL">No keyword with name 'Send Form Data Request' found.</msg>
-<status status="FAIL" starttime="20240905 00:22:17.277" endtime="20240905 00:22:17.277"/>
+<status status="PASS" starttime="20241010 10:33:31.807" endtime="20241010 10:33:37.535"/>
 </kw>
-<status status="PASS" starttime="20240905 00:22:15.652" endtime="20240905 00:22:22.505"/>
-</kw>
-<status status="PASS" starttime="20240905 00:22:15.651" endtime="20240905 00:22:22.505"/>
+<status status="PASS" starttime="20241010 10:33:31.807" endtime="20241010 10:33:37.535"/>
 </test>
-<status status="PASS" starttime="20240905 00:22:15.545" endtime="20240905 00:22:22.506"/>
+<status status="PASS" starttime="20241010 10:33:31.767" endtime="20241010 10:33:37.536"/>
 </suite>
 <statistics>
 <total>

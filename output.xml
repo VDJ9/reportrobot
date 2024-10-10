@@ -1,319 +1,1259 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.0 on win32)" generated="20240909 10:42:54.862" rpa="false" schemaversion="3">
-<suite id="s1" name="DemoAPI" source="c:\Users\citiadmin\Documents\workspace\RobotDemo\Demo\Tests\DemoAPI.robot">
-<test id="s1-t1" name="Authentication Account Admin" line="15">
-<kw name="Send Form Data Request" library="keywords_apidemo">
-<doc>Enviar una solicitud POST con datos codificados en x-www-form-urlencoded</doc>
-<kw name="Create Session" library="RequestsLibrary">
-<arg>my_session</arg>
-<arg>${BASE_URL}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20240909 10:43:02.266" level="INFO">Creating Session using : alias=my_session, url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20240909 10:43:02.266" endtime="20240909 10:43:02.282"/>
+<robot generator="Robot 6.0.2 (Python 3.11.0 on win32)" generated="20241010 13:43:02.409" rpa="false" schemaversion="3">
+<suite id="s1" name="MainTest" source="c:\Users\citiadmin\Documents\workspace\RPA-Aurum\PortalAdmin\Tests\MainTest.robot">
+<test id="s1-t1" name="Valida Pantallas" line="28">
+<kw name="Loging succesfull" library="keywords_loggin" type="SETUP">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20241010 13:43:05.209" level="INFO">Opening browser 'Chrome' to base url 'https://admin-dev.aurumcore.snbxciti.com/'.</msg>
+<status status="PASS" starttime="20241010 13:43:05.208" endtime="20241010 13:43:10.962"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/x-www-form-urlencoded</arg>
-<arg>Authorization=${AUTH_HEADER}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240909 10:43:02.284" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh'}</msg>
-<status status="PASS" starttime="20240909 10:43:02.283" endtime="20240909 10:43:02.284"/>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<arg>5</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20241010 13:43:10.963" endtime="20241010 13:43:10.979"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${data}</var>
-<arg>password=${PASSWORD}</arg>
-<arg>scope=${SCOPE}</arg>
-<arg>username=${USERNAME}</arg>
-<arg>longitude=${LONGITUDE}</arg>
-<arg>latitude=${LATITUDE}</arg>
-<arg>grant_type=${GRANT_TYPE}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240909 10:43:02.286" level="INFO">${data} = {'password': 'v0iKOSpA3bBFiCLaWemt', 'scope': 'use_otp update_info_scope use_accounts use_payments use_profile use_cards use_profile_when_onboarding', 'username': 'admin@snbxciti.com@snbxciti.com', 'l...</msg>
-<status status="PASS" starttime="20240909 10:43:02.284" endtime="20240909 10:43:02.286"/>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241010 13:43:10.979" endtime="20241010 13:43:14.330"/>
 </kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>my_session</arg>
-<arg>/</arg>
-<arg>data=${data}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20240909 10:43:04.510" level="INFO">POST Request : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
- path_url=/tenant/snbxciti.com/token/ 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'Content-Length': '231'} 
- body=password=v0iKOSpA3bBFiCLaWemt&amp;scope=use_otp+update_info_scope+use_accounts+use_payments+use_profile+use_cards+use_profile_when_onboarding&amp;username=admin%40snbxciti.com%40snbxciti.com&amp;longitude=40.9&amp;latitude=40.8&amp;grant_type=password 
- </msg>
-<msg timestamp="20240909 10:43:04.510" level="INFO">POST Response : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
- status=200, reason=OK 
- headers={'Date': 'Mon, 09 Sep 2024 16:42:59 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'activityid': '3517eaf1-11a7-4a34-a8e5-6a802f56081e', 'Accept': '*/*', 'X-Forwarded-Proto': 'https', 'X-Forwarded-For': '189.217.207.224', 'Host': 'auth-dev.aurumcore.snbxciti.com', 'Accept-Encoding': 'gzip, deflate, br', 'X-Forwarded-Port': '443', 'X-Amzn-Trace-Id': 'Root=1-66df2591-0903ae9d3bfb82f1083d0589'} 
- body={"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhZG1pbkBzbmJ4Y2l0aS5jb20iLCJhdXQiOiJBUFBMSUNBVElPTl9VU0VSIiwiYXVkIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsIm5iZiI6MTcyNTkwMDE3OCwiYXpwIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsInNjb3BlIjoidXBkYXRlX2luZm9fc2NvcGUgdXNlX2FjY291bnRzIHVzZV9jYXJkcyB1c2Vfb3RwIHVzZV9wYXltZW50cyB1c2VfcHJvZmlsZSB1c2VfcHJvZmlsZV93aGVuX29uYm9hcmRpbmciLCJpc3MiOiJodHRwczpcL1wvaXMtZGV2LmF1cnVtY29yZS5zbmJ4Y2l0aS5jb206OTQ0M1wvdFwvc25ieGNpdGkuY29tXC9vYXV0aDJcL3Rva2VuIiwiZXhwIjoxNzI1OTAzNzc4LCJpYXQiOjE3MjU5MDAxNzgsImp0aSI6ImVlZjA5ZGM4LWY2MGMtNGM1NS04ZWNjLTFkYzNjNDFhYzczNCJ9.KZCi96cepePHm588wrkeBbgacTj74k6YroB3e_Ln5I2CHwaofVCnOj087JwQhMwgQ0caNroLUvKnhQIFp093Hq0XpsJEsLeTFqxNbw8Jj1aWW1IkzsjTS-wxFtgQX_ptwZc6hm8LHUfk5oUZCwB3XW0RqraPKDqZSCCPrKxEUP6Hs7uWnhLa3y8fYCXxcDQWtGOo4gptK_BxQtKXvMAgo1T1Deg499ngIJ3KnY7-3uKB7uFsn41BMChtAILp5dO0uvAG6qMR689R2IIDKO9w12EhYIUVS7zI0UmAvfAOqrgWKQ5Xug9VursbARm4b0XKDQ8T3B9lg9bbUGrl3E47xQ","scope":"update_info_scope use_accounts use_cards use_otp use_payments use_profile use_profile_when_onboarding","token_type":"Bearer","expires_in":3600} 
- </msg>
-<msg timestamp="20240909 10:43:04.532" level="INFO">C:\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'auth-dev.aurumcore.snbxciti.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20240909 10:43:04.534" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240909 10:43:02.286" endtime="20240909 10:43:04.534"/>
+<kw name="Title Should Be" library="Selenium2Library">
+<arg>${titleT1}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20241010 13:43:14.346" level="INFO">Page title is 'AurumCore'.</msg>
+<status status="PASS" starttime="20241010 13:43:14.331" endtime="20241010 13:43:14.347"/>
 </kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<msg timestamp="20240909 10:43:04.537" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20240909 10:43:04.535" endtime="20240909 10:43:04.537"/>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:14.524" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:14.347" endtime="20241010 13:43:14.524"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>Response: ${response.text}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20240909 10:43:04.540" level="INFO">Response: {"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhZG1pbkBzbmJ4Y2l0aS5jb20iLCJhdXQiOiJBUFBMSUNBVElPTl9VU0VSIiwiYXVkIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsIm5iZiI6MTcyNTkwMDE3OCwiYXpwIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsInNjb3BlIjoidXBkYXRlX2luZm9fc2NvcGUgdXNlX2FjY291bnRzIHVzZV9jYXJkcyB1c2Vfb3RwIHVzZV9wYXltZW50cyB1c2VfcHJvZmlsZSB1c2VfcHJvZmlsZV93aGVuX29uYm9hcmRpbmciLCJpc3MiOiJodHRwczpcL1wvaXMtZGV2LmF1cnVtY29yZS5zbmJ4Y2l0aS5jb206OTQ0M1wvdFwvc25ieGNpdGkuY29tXC9vYXV0aDJcL3Rva2VuIiwiZXhwIjoxNzI1OTAzNzc4LCJpYXQiOjE3MjU5MDAxNzgsImp0aSI6ImVlZjA5ZGM4LWY2MGMtNGM1NS04ZWNjLTFkYzNjNDFhYzczNCJ9.KZCi96cepePHm588wrkeBbgacTj74k6YroB3e_Ln5I2CHwaofVCnOj087JwQhMwgQ0caNroLUvKnhQIFp093Hq0XpsJEsLeTFqxNbw8Jj1aWW1IkzsjTS-wxFtgQX_ptwZc6hm8LHUfk5oUZCwB3XW0RqraPKDqZSCCPrKxEUP6Hs7uWnhLa3y8fYCXxcDQWtGOo4gptK_BxQtKXvMAgo1T1Deg499ngIJ3KnY7-3uKB7uFsn41BMChtAILp5dO0uvAG6qMR689R2IIDKO9w12EhYIUVS7zI0UmAvfAOqrgWKQ5Xug9VursbARm4b0XKDQ8T3B9lg9bbUGrl3E47xQ","scope":"update_info_scope use_accounts use_cards use_otp use_payments use_profile use_profile_when_onboarding","token_type":"Bearer","expires_in":3600}</msg>
-<status status="PASS" starttime="20240909 10:43:04.538" endtime="20240909 10:43:04.540"/>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgAurum}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:43:14.525" endtime="20241010 13:43:14.567"/>
 </kw>
-<kw name="Get From Dictionary" library="Collections">
-<var>${auth_token}</var>
-<arg>${response.json()}</arg>
-<arg>access_token</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20240909 10:43:04.542" level="INFO">${auth_token} = eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJ...</msg>
-<status status="PASS" starttime="20240909 10:43:04.540" endtime="20240909 10:43:04.542"/>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${ingresar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:14.567" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div/div[2]/div/div/div/button'.</msg>
+<status status="PASS" starttime="20241010 13:43:14.567" endtime="20241010 13:43:17.876"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>Auth Token: ${auth_token}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20240909 10:43:04.543" level="INFO">Auth Token: eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhZG1pbkBzbmJ4Y2l0aS5jb20iLCJhdXQiOiJBUFBMSUNBVElPTl9VU0VSIiwiYXVkIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsIm5iZiI6MTcyNTkwMDE3OCwiYXpwIjoiSzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YSIsInNjb3BlIjoidXBkYXRlX2luZm9fc2NvcGUgdXNlX2FjY291bnRzIHVzZV9jYXJkcyB1c2Vfb3RwIHVzZV9wYXltZW50cyB1c2VfcHJvZmlsZSB1c2VfcHJvZmlsZV93aGVuX29uYm9hcmRpbmciLCJpc3MiOiJodHRwczpcL1wvaXMtZGV2LmF1cnVtY29yZS5zbmJ4Y2l0aS5jb206OTQ0M1wvdFwvc25ieGNpdGkuY29tXC9vYXV0aDJcL3Rva2VuIiwiZXhwIjoxNzI1OTAzNzc4LCJpYXQiOjE3MjU5MDAxNzgsImp0aSI6ImVlZjA5ZGM4LWY2MGMtNGM1NS04ZWNjLTFkYzNjNDFhYzczNCJ9.KZCi96cepePHm588wrkeBbgacTj74k6YroB3e_Ln5I2CHwaofVCnOj087JwQhMwgQ0caNroLUvKnhQIFp093Hq0XpsJEsLeTFqxNbw8Jj1aWW1IkzsjTS-wxFtgQX_ptwZc6hm8LHUfk5oUZCwB3XW0RqraPKDqZSCCPrKxEUP6Hs7uWnhLa3y8fYCXxcDQWtGOo4gptK_BxQtKXvMAgo1T1Deg499ngIJ3KnY7-3uKB7uFsn41BMChtAILp5dO0uvAG6qMR689R2IIDKO9w12EhYIUVS7zI0UmAvfAOqrgWKQ5Xug9VursbARm4b0XKDQ8T3B9lg9bbUGrl3E47xQ</msg>
-<status status="PASS" starttime="20240909 10:43:04.543" endtime="20240909 10:43:04.543"/>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>WARN</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20241010 13:43:17.877" endtime="20241010 13:43:17.879"/>
 </kw>
-<status status="PASS" starttime="20240909 10:43:02.264" endtime="20240909 10:43:04.543"/>
+<kw name="Input Text" library="Selenium2Library">
+<arg>id=${txtUser}</arg>
+<arg>${user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20241010 13:43:17.880" endtime="20241010 13:43:18.137"/>
 </kw>
-<status status="PASS" starttime="20240909 10:43:02.263" endtime="20240909 10:43:04.545"/>
+<kw name="Input Text" library="Selenium2Library">
+<arg>id=${txtPass}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20241010 13:43:18.139" endtime="20241010 13:43:18.287"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20241010 13:43:18.288" level="INFO">Log level changed from WARN to INFO.</msg>
+<status status="PASS" starttime="20241010 13:43:18.288" endtime="20241010 13:43:18.288"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:18.475" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:18.288" endtime="20241010 13:43:18.475"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${btnIngresar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:18.476" level="INFO">Clicking element 'xpath=//*[@id="loginForm"]/div[7]/button'.</msg>
+<status status="PASS" starttime="20241010 13:43:18.475" endtime="20241010 13:43:18.533"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgInicio}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:43:18.534" endtime="20241010 13:43:20.833"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:21.070" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:20.834" endtime="20241010 13:43:21.071"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:05.207" endtime="20241010 13:43:21.071"/>
+</kw>
+<kw name="Resumen" library="keywords_resumen">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${imgResumen}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:21.078" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[1]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:21.076" endtime="20241010 13:43:22.064"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:23.011" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:22.065" endtime="20241010 13:43:23.012"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgCuentasResumen}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:43:23.013" endtime="20241010 13:43:23.959"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:24.213" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:23.959" endtime="20241010 13:43:24.215"/>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<arg>window.scrollTo(0, document.body.scrollHeight);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20241010 13:43:24.219" level="INFO">Executing JavaScript:
+window.scrollTo(0, document.body.scrollHeight);
+Without any arguments.</msg>
+<status status="PASS" starttime="20241010 13:43:24.216" endtime="20241010 13:43:24.243"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:26.244" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:24.244" endtime="20241010 13:43:26.245"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_final_pantalla.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:26.396" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_final_pantalla.png"&gt;&lt;img src="output/captura_final_pantalla.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:26.247" endtime="20241010 13:43:26.396"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:21.075" endtime="20241010 13:43:26.396"/>
+</kw>
+<kw name="Organizaciones" library="keywords_organizaciones">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkOrganizaciones}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:26.399" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[3]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:26.398" endtime="20241010 13:43:26.554"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${txtActivo}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:43:26.555" endtime="20241010 13:43:26.843"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_organizaciones.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:27.043" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_organizaciones.png"&gt;&lt;img src="output/captura_organizaciones.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:26.843" endtime="20241010 13:43:27.044"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:26.397" endtime="20241010 13:43:27.045"/>
+</kw>
+<kw name="Cuentas" library="keywords_cuentas">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkCuentas}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:27.055" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[5]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:27.054" endtime="20241010 13:43:27.353"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:29.354" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:27.354" endtime="20241010 13:43:29.354"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_cuentas.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:29.477" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_cuentas.png"&gt;&lt;img src="output/captura_cuentas.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:29.354" endtime="20241010 13:43:29.478"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:27.053" endtime="20241010 13:43:29.478"/>
+</kw>
+<kw name="Comisiones" library="keywords_comisiones">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkComisiones}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:29.481" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[6]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:29.480" endtime="20241010 13:43:30.426"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:32.430" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:30.428" endtime="20241010 13:43:32.430"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_comisiones.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:32.559" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_comisiones.png"&gt;&lt;img src="output/captura_comisiones.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:32.430" endtime="20241010 13:43:32.560"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:29.479" endtime="20241010 13:43:32.560"/>
+</kw>
+<kw name="Limites" library="keywords_limites">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkLimites}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:32.563" level="INFO">Clicking element 'xpath=//a[contains(@href, '/limit/scheme')]'.</msg>
+<status status="PASS" starttime="20241010 13:43:32.563" endtime="20241010 13:43:33.375"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:35.382" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:33.379" endtime="20241010 13:43:35.382"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_limites.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:35.509" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_limites.png"&gt;&lt;img src="output/captura_limites.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:35.382" endtime="20241010 13:43:35.509"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:32.561" endtime="20241010 13:43:35.510"/>
+</kw>
+<kw name="Impuestos" library="keywords_impuestos">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkImpuestos}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:35.512" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[8]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:35.511" endtime="20241010 13:43:36.350"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:38.354" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:36.352" endtime="20241010 13:43:38.354"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_impuestos.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:38.489" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_impuestos.png"&gt;&lt;img src="output/captura_impuestos.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:38.354" endtime="20241010 13:43:38.489"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:35.511" endtime="20241010 13:43:38.489"/>
+</kw>
+<kw name="Rendimiento" library="keywords_rendimiento">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkRendimiento}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:38.493" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[9]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:38.492" endtime="20241010 13:43:39.308"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:41.313" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:39.310" endtime="20241010 13:43:41.313"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_rendimiento.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:41.439" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_rendimiento.png"&gt;&lt;img src="output/captura_rendimiento.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:41.314" endtime="20241010 13:43:41.439"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:38.490" endtime="20241010 13:43:41.439"/>
+</kw>
+<kw name="Correo SMS" library="keywords_correoysms">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkCorreo}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:41.444" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[11]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:41.443" endtime="20241010 13:43:41.699"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:43.700" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:41.699" endtime="20241010 13:43:43.700"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_correoysms.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:43.892" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_correoysms.png"&gt;&lt;img src="output/captura_correoysms.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:43.701" endtime="20241010 13:43:43.893"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:41.442" endtime="20241010 13:43:43.893"/>
+</kw>
+<kw name="Mensajes de Error" library="keywords_mensajesError">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkMsnError}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:43.898" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[12]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:43.897" endtime="20241010 13:43:44.070"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:46.073" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:44.071" endtime="20241010 13:43:46.073"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_locator_mensajesE.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:46.250" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_locator_mensajesE.png"&gt;&lt;img src="output/captura_locator_mensajesE.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:46.074" endtime="20241010 13:43:46.250"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:43.897" endtime="20241010 13:43:46.250"/>
+</kw>
+<kw name="Catalogos" library="keywords_catalogos">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkCatalogo}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:46.253" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[13]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:46.251" endtime="20241010 13:43:46.472"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:48.474" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:46.472" endtime="20241010 13:43:48.474"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_catalogos.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:48.624" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_catalogos.png"&gt;&lt;img src="output/captura_catalogos.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:48.474" endtime="20241010 13:43:48.624"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:46.251" endtime="20241010 13:43:48.625"/>
+</kw>
+<kw name="Reportes Transacciones" library="keywords_reportesTransacciones">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkReporteTrans}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:48.627" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[15]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:48.626" endtime="20241010 13:43:48.838"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:50.839" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:48.838" endtime="20241010 13:43:50.839"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_reportesTransacciones.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:51.007" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_reportesTransacciones.png"&gt;&lt;img src="output/captura_reportesTransacciones.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:50.840" endtime="20241010 13:43:51.007"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:48.625" endtime="20241010 13:43:51.008"/>
+</kw>
+<kw name="Reportes" library="keywords_reportes">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkReportes}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:51.011" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[16]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:51.010" endtime="20241010 13:43:51.225"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:53.230" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:51.227" endtime="20241010 13:43:53.230"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_reportes.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:53.350" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_reportes.png"&gt;&lt;img src="output/captura_reportes.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:53.230" endtime="20241010 13:43:53.350"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:51.009" endtime="20241010 13:43:53.351"/>
+</kw>
+<kw name="Reportes Costumizados" library="keywords_reportesCustomizados">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkReportesCustom}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:53.354" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[17]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:53.352" endtime="20241010 13:43:53.511"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:55.514" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:53.512" endtime="20241010 13:43:55.514"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_reportesCustomizados.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:55.657" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_reportesCustomizados.png"&gt;&lt;img src="output/captura_reportesCustomizados.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:55.514" endtime="20241010 13:43:55.657"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:53.351" endtime="20241010 13:43:55.657"/>
+</kw>
+<kw name="Usuarios" library="keywords_usuarios">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkUsuarios}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:55.660" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[19]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:55.659" endtime="20241010 13:43:55.793"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:43:57.795" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:55.793" endtime="20241010 13:43:57.795"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_usuarios.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:43:57.960" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_usuarios.png"&gt;&lt;img src="output/captura_usuarios.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:43:57.795" endtime="20241010 13:43:57.961"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:55.659" endtime="20241010 13:43:57.961"/>
+</kw>
+<kw name="Holidays" library="keywords_holidays">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkHolidays}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:43:57.964" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[20]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:43:57.963" endtime="20241010 13:43:58.096"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:44:00.097" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:43:58.096" endtime="20241010 13:44:00.097"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_holidays.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:00.230" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_holidays.png"&gt;&lt;img src="output/captura_holidays.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:00.098" endtime="20241010 13:44:00.230"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:57.962" endtime="20241010 13:44:00.230"/>
+</kw>
+<kw name="Ajustes Del Sistema" library="keywords_ajustesSistema">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkSistema}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:00.233" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[21]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:44:00.232" endtime="20241010 13:44:00.376"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:44:02.378" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:44:00.376" endtime="20241010 13:44:02.378"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_ajustesSistem.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:02.535" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_ajustesSistem.png"&gt;&lt;img src="output/captura_ajustesSistem.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:02.378" endtime="20241010 13:44:02.535"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:00.231" endtime="20241010 13:44:02.536"/>
+</kw>
+<kw name="Mantenimiento" library="keywords_mantenimiento">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkMantenimiento}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:02.538" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[22]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:44:02.537" endtime="20241010 13:44:02.714"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:44:04.715" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:44:02.715" endtime="20241010 13:44:04.715"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_mantenimiento.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:04.858" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_mantenimiento.png"&gt;&lt;img src="output/captura_mantenimiento.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:04.716" endtime="20241010 13:44:04.858"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:02.537" endtime="20241010 13:44:04.858"/>
+</kw>
+<kw name="Close All Browsers" library="Selenium2Library" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20241010 13:44:04.859" endtime="20241010 13:44:13.534"/>
+</kw>
+<status status="PASS" starttime="20241010 13:43:05.207" endtime="20241010 13:44:13.536"/>
 </test>
-<test id="s1-t2" name="Authentication Account" line="17">
-<kw name="Send Form Data Request New Account" library="keywords_apidemo">
-<doc>Enviar una solicitud POST con datos codificados en x-www-form-urlencoded</doc>
-<kw name="Create Session" library="RequestsLibrary">
-<arg>my_session</arg>
-<arg>${BASE_URL}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20240909 10:43:04.557" level="INFO">Creating Session using : alias=my_session, url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20240909 10:43:04.557" endtime="20240909 10:43:04.558"/>
+<test id="s1-t2" name="Valida Pantalla Organizaciones" line="49">
+<kw name="Loging succesfull" library="keywords_loggin" type="SETUP">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20241010 13:44:13.539" level="INFO">Opening browser 'Chrome' to base url 'https://admin-dev.aurumcore.snbxciti.com/'.</msg>
+<status status="PASS" starttime="20241010 13:44:13.538" endtime="20241010 13:44:17.865"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/x-www-form-urlencoded</arg>
-<arg>Authorization=${AUTH_HEADER}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240909 10:43:04.559" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh'}</msg>
-<status status="PASS" starttime="20240909 10:43:04.558" endtime="20240909 10:43:04.559"/>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<arg>5</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20241010 13:44:17.866" endtime="20241010 13:44:17.881"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${data}</var>
-<arg>password=hhbIaZnOPaa0V+2rOk6+LQ==</arg>
-<arg>scope=${SCOPE}</arg>
-<arg>username=test_aurumu8qoie@yopmail.com@snbxciti.com</arg>
-<arg>longitude=${LONGITUDE}</arg>
-<arg>latitude=${LATITUDE}</arg>
-<arg>grant_type=${GRANT_TYPE}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240909 10:43:04.561" level="INFO">${data} = {'password': 'hhbIaZnOPaa0V+2rOk6+LQ==', 'scope': 'use_otp update_info_scope use_accounts use_payments use_profile use_cards use_profile_when_onboarding', 'username': 'test_aurumu8qoie@yopmail.com@snb...</msg>
-<status status="PASS" starttime="20240909 10:43:04.560" endtime="20240909 10:43:04.561"/>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241010 13:44:17.882" endtime="20241010 13:44:23.667"/>
 </kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>my_session</arg>
-<arg>/</arg>
-<arg>data=${data}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20240909 10:43:05.301" level="INFO">POST Request : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
- path_url=/tenant/snbxciti.com/token/ 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'Content-Length': '253'} 
- body=password=hhbIaZnOPaa0V%2B2rOk6%2BLQ%3D%3D&amp;scope=use_otp+update_info_scope+use_accounts+use_payments+use_profile+use_cards+use_profile_when_onboarding&amp;username=test_aurumu8qoie%40yopmail.com%40snbxciti.com&amp;longitude=40.9&amp;latitude=40.8&amp;grant_type=password 
- </msg>
-<msg timestamp="20240909 10:43:05.301" level="INFO">POST Response : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
- status=200, reason=OK 
- headers={'Date': 'Mon, 09 Sep 2024 16:42:59 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'activityid': '5a8a4c8a-8807-4422-9c80-4cf856853247', 'Accept': '*/*', 'X-Forwarded-Proto': 'https', 'X-Forwarded-For': '189.217.207.224', 'Host': 'auth-dev.aurumcore.snbxciti.com', 'Accept-Encoding': 'gzip, deflate, br', 'X-Forwarded-Port': '443', 'X-Amzn-Trace-Id': 'Root=1-66df2593-58ff399a69fa13cd76882b69'} 
- body={"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxNzksImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc3OSwiaWF0IjoxNzI1OTAwMTc5LCJqdGkiOiJkZTZhMjYzOC0zNWUxLTQwYjEtYTg3OS1kMWQ2NzY0ZTRlM2UifQ.S1B5ZkbxPpw-hz7aqB7izZAHHvpl_zbWiRKzyyd3_L0f1lWZF0l0U9LAcmd8cAvD3Os4Z3Xjm_bhjX56VRnwMcwC7pBBDEUrT1WUrilhY70pgeAMg-B0A4vD33GXTNarkHCaD0ortpyNso36SImk8zjEXLhBHFwnUgpp1zVeHlGtsoMr9OKrBkEJiGvl2aGhZEZBAoUFeqzEoOS4lBJR3DHx6bglTbdHG-W5JjtI1xJF-QLQvrm5PYHxENoqfe1TwD4Hqkp6BYRJk9-Itfrq9Yab66LLkiaI9RLKM0iK3y4qfMtqOWie-vby8jv_GdITID59fJ7Rh3nhwFotkZBA-w","scope":"update_info_scope use_otp use_profile_when_onboarding","token_type":"Bearer","expires_in":3600} 
- </msg>
-<msg timestamp="20240909 10:43:05.301" level="INFO">C:\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'auth-dev.aurumcore.snbxciti.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20240909 10:43:05.302" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240909 10:43:04.562" endtime="20240909 10:43:05.303"/>
+<kw name="Title Should Be" library="Selenium2Library">
+<arg>${titleT1}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20241010 13:44:23.693" level="INFO">Page title is 'AurumCore'.</msg>
+<status status="PASS" starttime="20241010 13:44:23.667" endtime="20241010 13:44:23.694"/>
 </kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<msg timestamp="20240909 10:43:05.304" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20240909 10:43:05.303" endtime="20240909 10:43:05.304"/>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:23.846" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:23.694" endtime="20241010 13:44:23.847"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>Response: ${response.text}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20240909 10:43:05.305" level="INFO">Response: {"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxNzksImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc3OSwiaWF0IjoxNzI1OTAwMTc5LCJqdGkiOiJkZTZhMjYzOC0zNWUxLTQwYjEtYTg3OS1kMWQ2NzY0ZTRlM2UifQ.S1B5ZkbxPpw-hz7aqB7izZAHHvpl_zbWiRKzyyd3_L0f1lWZF0l0U9LAcmd8cAvD3Os4Z3Xjm_bhjX56VRnwMcwC7pBBDEUrT1WUrilhY70pgeAMg-B0A4vD33GXTNarkHCaD0ortpyNso36SImk8zjEXLhBHFwnUgpp1zVeHlGtsoMr9OKrBkEJiGvl2aGhZEZBAoUFeqzEoOS4lBJR3DHx6bglTbdHG-W5JjtI1xJF-QLQvrm5PYHxENoqfe1TwD4Hqkp6BYRJk9-Itfrq9Yab66LLkiaI9RLKM0iK3y4qfMtqOWie-vby8jv_GdITID59fJ7Rh3nhwFotkZBA-w","scope":"update_info_scope use_otp use_profile_when_onboarding","token_type":"Bearer","expires_in":3600}</msg>
-<status status="PASS" starttime="20240909 10:43:05.305" endtime="20240909 10:43:05.305"/>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgAurum}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:44:23.847" endtime="20241010 13:44:23.885"/>
 </kw>
-<kw name="Get From Dictionary" library="Collections">
-<var>${auth_token}</var>
-<arg>${response.json()}</arg>
-<arg>access_token</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20240909 10:43:05.306" level="INFO">${auth_token} = eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJ...</msg>
-<status status="PASS" starttime="20240909 10:43:05.306" endtime="20240909 10:43:05.307"/>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${ingresar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:23.887" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div/div[2]/div/div/div/button'.</msg>
+<status status="PASS" starttime="20241010 13:44:23.886" endtime="20241010 13:44:26.571"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>Auth Token: ${auth_token}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20240909 10:43:05.307" level="INFO">Auth Token: eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxNzksImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc3OSwiaWF0IjoxNzI1OTAwMTc5LCJqdGkiOiJkZTZhMjYzOC0zNWUxLTQwYjEtYTg3OS1kMWQ2NzY0ZTRlM2UifQ.S1B5ZkbxPpw-hz7aqB7izZAHHvpl_zbWiRKzyyd3_L0f1lWZF0l0U9LAcmd8cAvD3Os4Z3Xjm_bhjX56VRnwMcwC7pBBDEUrT1WUrilhY70pgeAMg-B0A4vD33GXTNarkHCaD0ortpyNso36SImk8zjEXLhBHFwnUgpp1zVeHlGtsoMr9OKrBkEJiGvl2aGhZEZBAoUFeqzEoOS4lBJR3DHx6bglTbdHG-W5JjtI1xJF-QLQvrm5PYHxENoqfe1TwD4Hqkp6BYRJk9-Itfrq9Yab66LLkiaI9RLKM0iK3y4qfMtqOWie-vby8jv_GdITID59fJ7Rh3nhwFotkZBA-w</msg>
-<status status="PASS" starttime="20240909 10:43:05.307" endtime="20240909 10:43:05.308"/>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>WARN</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20241010 13:44:26.571" endtime="20241010 13:44:26.572"/>
 </kw>
-<status status="PASS" starttime="20240909 10:43:04.556" endtime="20240909 10:43:05.308"/>
+<kw name="Input Text" library="Selenium2Library">
+<arg>id=${txtUser}</arg>
+<arg>${user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20241010 13:44:26.572" endtime="20241010 13:44:26.735"/>
 </kw>
-<kw name="GetAddress" library="keywords_apidemo">
-<doc>Obtiene la direccion de la cuenta loggeada</doc>
-<kw name="Send Form Data Request New Account" library="keywords_apidemo">
-<var>${auth_token}</var>
-<doc>Enviar una solicitud POST con datos codificados en x-www-form-urlencoded</doc>
-<kw name="Create Session" library="RequestsLibrary">
-<arg>my_session</arg>
-<arg>${BASE_URL}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20240909 10:43:05.310" level="INFO">Creating Session using : alias=my_session, url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20240909 10:43:05.309" endtime="20240909 10:43:05.310"/>
+<kw name="Input Text" library="Selenium2Library">
+<arg>id=${txtPass}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20241010 13:44:26.736" endtime="20241010 13:44:26.878"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/x-www-form-urlencoded</arg>
-<arg>Authorization=${AUTH_HEADER}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240909 10:43:05.311" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh'}</msg>
-<status status="PASS" starttime="20240909 10:43:05.310" endtime="20240909 10:43:05.311"/>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20241010 13:44:26.881" level="INFO">Log level changed from WARN to INFO.</msg>
+<status status="PASS" starttime="20241010 13:44:26.879" endtime="20241010 13:44:26.882"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${data}</var>
-<arg>password=hhbIaZnOPaa0V+2rOk6+LQ==</arg>
-<arg>scope=${SCOPE}</arg>
-<arg>username=test_aurumu8qoie@yopmail.com@snbxciti.com</arg>
-<arg>longitude=${LONGITUDE}</arg>
-<arg>latitude=${LATITUDE}</arg>
-<arg>grant_type=${GRANT_TYPE}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240909 10:43:05.312" level="INFO">${data} = {'password': 'hhbIaZnOPaa0V+2rOk6+LQ==', 'scope': 'use_otp update_info_scope use_accounts use_payments use_profile use_cards use_profile_when_onboarding', 'username': 'test_aurumu8qoie@yopmail.com@snb...</msg>
-<status status="PASS" starttime="20240909 10:43:05.311" endtime="20240909 10:43:05.312"/>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:27.065" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:26.882" endtime="20241010 13:44:27.066"/>
 </kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>my_session</arg>
-<arg>/</arg>
-<arg>data=${data}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20240909 10:43:05.938" level="INFO">POST Request : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
- path_url=/tenant/snbxciti.com/token/ 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'Content-Length': '253'} 
- body=password=hhbIaZnOPaa0V%2B2rOk6%2BLQ%3D%3D&amp;scope=use_otp+update_info_scope+use_accounts+use_payments+use_profile+use_cards+use_profile_when_onboarding&amp;username=test_aurumu8qoie%40yopmail.com%40snbxciti.com&amp;longitude=40.9&amp;latitude=40.8&amp;grant_type=password 
- </msg>
-<msg timestamp="20240909 10:43:05.938" level="INFO">POST Response : url=https://auth-dev.aurumcore.snbxciti.com/tenant/snbxciti.com/token/ 
- status=200, reason=OK 
- headers={'Date': 'Mon, 09 Sep 2024 16:43:00 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Authorization': 'Basic SzM0OWV3RkRqeFR5VnVfZnhORENwQk1zYlg4YTpyYlZxXzhlalZqZXhERUtwUmJjVG1uZk1NSXdh', 'activityid': 'c3a5dd01-007d-41a8-982f-020651e83984', 'Accept': '*/*', 'X-Forwarded-Proto': 'https', 'X-Forwarded-For': '189.217.207.224', 'Host': 'auth-dev.aurumcore.snbxciti.com', 'Accept-Encoding': 'gzip, deflate, br', 'X-Forwarded-Port': '443', 'X-Amzn-Trace-Id': 'Root=1-66df2594-4a6e04e61918b2a430bc08b3'} 
- body={"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxODAsImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc4MCwiaWF0IjoxNzI1OTAwMTgwLCJqdGkiOiI3MDVjMjUwNC1lNzRmLTRjN2QtOTZhNC00NmE0ZWY2ZmU5MTEifQ.Uzflpym0480jJmYA5fS8K1xqgdU4bJ7uJcvtKCx4jW-JAahy0GxombVsuvMqsRQ4VmXv4oCRDqIAgPdQNv6BIfCRHoQf64eaLZ4iAqe4b05jzEhIIegzIkVy7sww58HWZXtEF9PVWYScm3H2rEEtqm2GoHOI-jq09HJjMUEFal_vlIBjEnL_40zM67A7H_c9w_t_vz6qE5lGCOMQ1JAhZzXzfYSZILyzouPKtrXfYwcrhfVivvL7AzaLbZ9fSCtlzCe6lKNkkflb57EhRQAqN6_I24VEzrRC0yad6zXEkFRBE8_j2j5k07PU6s8S-0fUvQw1WagXg1410WTCjHzKEQ","scope":"update_info_scope use_otp use_profile_when_onboarding","token_type":"Bearer","expires_in":3600} 
- </msg>
-<msg timestamp="20240909 10:43:05.939" level="INFO">C:\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'auth-dev.aurumcore.snbxciti.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20240909 10:43:05.940" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240909 10:43:05.312" endtime="20240909 10:43:05.941"/>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${btnIngresar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:27.067" level="INFO">Clicking element 'xpath=//*[@id="loginForm"]/div[7]/button'.</msg>
+<status status="PASS" starttime="20241010 13:44:27.066" endtime="20241010 13:44:27.201"/>
 </kw>
-<kw name="Should Be Equal As Numbers" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<msg timestamp="20240909 10:43:05.943" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20240909 10:43:05.941" endtime="20240909 10:43:05.944"/>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgInicio}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:44:27.202" endtime="20241010 13:44:29.760"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>Response: ${response.text}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20240909 10:43:05.946" level="INFO">Response: {"access_token":"eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxODAsImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc4MCwiaWF0IjoxNzI1OTAwMTgwLCJqdGkiOiI3MDVjMjUwNC1lNzRmLTRjN2QtOTZhNC00NmE0ZWY2ZmU5MTEifQ.Uzflpym0480jJmYA5fS8K1xqgdU4bJ7uJcvtKCx4jW-JAahy0GxombVsuvMqsRQ4VmXv4oCRDqIAgPdQNv6BIfCRHoQf64eaLZ4iAqe4b05jzEhIIegzIkVy7sww58HWZXtEF9PVWYScm3H2rEEtqm2GoHOI-jq09HJjMUEFal_vlIBjEnL_40zM67A7H_c9w_t_vz6qE5lGCOMQ1JAhZzXzfYSZILyzouPKtrXfYwcrhfVivvL7AzaLbZ9fSCtlzCe6lKNkkflb57EhRQAqN6_I24VEzrRC0yad6zXEkFRBE8_j2j5k07PU6s8S-0fUvQw1WagXg1410WTCjHzKEQ","scope":"update_info_scope use_otp use_profile_when_onboarding","token_type":"Bearer","expires_in":3600}</msg>
-<status status="PASS" starttime="20240909 10:43:05.944" endtime="20240909 10:43:05.947"/>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:30.020" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:29.761" endtime="20241010 13:44:30.021"/>
 </kw>
-<kw name="Get From Dictionary" library="Collections">
-<var>${auth_token}</var>
-<arg>${response.json()}</arg>
-<arg>access_token</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20240909 10:43:05.949" level="INFO">${auth_token} = eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJ...</msg>
-<status status="PASS" starttime="20240909 10:43:05.947" endtime="20240909 10:43:05.950"/>
+<status status="PASS" starttime="20241010 13:44:13.537" endtime="20241010 13:44:30.021"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>Auth Token: ${auth_token}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20240909 10:43:05.951" level="INFO">Auth Token: eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxODAsImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc4MCwiaWF0IjoxNzI1OTAwMTgwLCJqdGkiOiI3MDVjMjUwNC1lNzRmLTRjN2QtOTZhNC00NmE0ZWY2ZmU5MTEifQ.Uzflpym0480jJmYA5fS8K1xqgdU4bJ7uJcvtKCx4jW-JAahy0GxombVsuvMqsRQ4VmXv4oCRDqIAgPdQNv6BIfCRHoQf64eaLZ4iAqe4b05jzEhIIegzIkVy7sww58HWZXtEF9PVWYScm3H2rEEtqm2GoHOI-jq09HJjMUEFal_vlIBjEnL_40zM67A7H_c9w_t_vz6qE5lGCOMQ1JAhZzXzfYSZILyzouPKtrXfYwcrhfVivvL7AzaLbZ9fSCtlzCe6lKNkkflb57EhRQAqN6_I24VEzrRC0yad6zXEkFRBE8_j2j5k07PU6s8S-0fUvQw1WagXg1410WTCjHzKEQ</msg>
-<status status="PASS" starttime="20240909 10:43:05.950" endtime="20240909 10:43:05.951"/>
+<kw name="Organizaciones" library="keywords_organizaciones">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkOrganizaciones}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:30.024" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[3]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:44:30.023" endtime="20241010 13:44:31.094"/>
 </kw>
-<msg timestamp="20240909 10:43:05.952" level="INFO">${auth_token} = eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJ...</msg>
-<status status="PASS" starttime="20240909 10:43:05.309" endtime="20240909 10:43:05.952"/>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${txtActivo}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:44:31.096" endtime="20241010 13:44:31.387"/>
 </kw>
-<kw name="Create Session" library="RequestsLibrary">
-<arg>my_session</arg>
-<arg>${URLGET}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20240909 10:43:05.953" level="INFO">Creating Session using : alias=my_session, url=https://api-dev.aurumcore.snbxciti.com:9095/t/snbxciti.com/onboarding/1.0.0/getAddress, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20240909 10:43:05.952" endtime="20240909 10:43:05.953"/>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_organizaciones.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:31.581" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_organizaciones.png"&gt;&lt;img src="output/captura_organizaciones.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:31.388" endtime="20241010 13:44:31.582"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/x-www-form-urlencoded</arg>
-<arg>Authorization=Bearer ${auth_token}</arg>
-<arg>x-signature=${SIGNATURE}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240909 10:43:05.955" level="INFO">${headers} = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XW...</msg>
-<status status="PASS" starttime="20240909 10:43:05.954" endtime="20240909 10:43:05.955"/>
+<status status="PASS" starttime="20241010 13:44:30.022" endtime="20241010 13:44:31.582"/>
 </kw>
-<kw name="Catenate" library="BuiltIn">
-<var>${full_url}</var>
-<arg>${URLGET}${QUERY_PARAMS}</arg>
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<msg timestamp="20240909 10:43:05.956" level="INFO">${full_url} = https://api-dev.aurumcore.snbxciti.com:9095/t/snbxciti.com/onboarding/1.0.0/getAddress?pc=74325</msg>
-<status status="PASS" starttime="20240909 10:43:05.955" endtime="20240909 10:43:05.956"/>
+<kw name="Detalle Organizacion" library="keywords_organizaciones">
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<arg>${lnkOrganizacion}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20241010 13:44:31.584" endtime="20241010 13:44:31.636"/>
 </kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>my_session</arg>
-<arg>${full_url}</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20240909 10:43:08.364" level="INFO">GET Request : url=https://api-dev.aurumcore.snbxciti.com:9095/t/snbxciti.com/onboarding/1.0.0/getAddress?pc=74325 
- path_url=/t/snbxciti.com/onboarding/1.0.0/getAddress?pc=74325 
- headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer eyJ4NXQiOiJNREZtTVdZME1ESmhNRGhpWkdFd01XWXhPVFl4WWpFd1pEVTRZakZrTmpJek9XSXpOV1JoTURZd1ptRXpaamN3TURKaE9EVXlZMlJqWVRjek1XWXlaUSIsImtpZCI6Ik1ERm1NV1kwTURKaE1EaGlaR0V3TVdZeE9UWXhZakV3WkRVNFlqRmtOakl6T1dJek5XUmhNRFl3Wm1FelpqY3dNREpoT0RVeVkyUmpZVGN6TVdZeVpRX1JTMjU2IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0X2F1cnVtdThxb2llQHlvcG1haWwuY29tIiwiYXV0IjoiQVBQTElDQVRJT05fVVNFUiIsImF1ZCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJuYmYiOjE3MjU5MDAxODAsImF6cCI6IkszNDlld0ZEanhUeVZ1X2Z4TkRDcEJNc2JYOGEiLCJzY29wZSI6InVwZGF0ZV9pbmZvX3Njb3BlIHVzZV9vdHAgdXNlX3Byb2ZpbGVfd2hlbl9vbmJvYXJkaW5nIiwiaXNzIjoiaHR0cHM6XC9cL2lzLWRldi5hdXJ1bWNvcmUuc25ieGNpdGkuY29tOjk0NDNcL3RcL3NuYnhjaXRpLmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcyNTkwMzc4MCwiaWF0IjoxNzI1OTAwMTgwLCJqdGkiOiI3MDVjMjUwNC1lNzRmLTRjN2QtOTZhNC00NmE0ZWY2ZmU5MTEifQ.Uzflpym0480jJmYA5fS8K1xqgdU4bJ7uJcvtKCx4jW-JAahy0GxombVsuvMqsRQ4VmXv4oCRDqIAgPdQNv6BIfCRHoQf64eaLZ4iAqe4b05jzEhIIegzIkVy7sww58HWZXtEF9PVWYScm3H2rEEtqm2GoHOI-jq09HJjMUEFal_vlIBjEnL_40zM67A7H_c9w_t_vz6qE5lGCOMQ1JAhZzXzfYSZILyzouPKtrXfYwcrhfVivvL7AzaLbZ9fSCtlzCe6lKNkkflb57EhRQAqN6_I24VEzrRC0yad6zXEkFRBE8_j2j5k07PU6s8S-0fUvQw1WagXg1410WTCjHzKEQ', 'x-signature': '39tlgG13CX79kLVATwkir+4benvbjcwyvyA0e8La7jA='} 
- body=None 
- </msg>
-<msg timestamp="20240909 10:43:08.365" level="INFO">GET Response : url=https://api-dev.aurumcore.snbxciti.com:9095/t/snbxciti.com/onboarding/1.0.0/getAddress?pc=74325 
- status=200, reason=OK 
- headers={'Date': 'Mon, 09 Sep 2024 16:43:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'server': 'envoy'} 
- body={"responseCode":"0","responseMessage":"Proceso completo y exitoso.","responseSubject":"Éxito","messageType":1,"transId":"412409091143010001","data":[{"idState":"21","nameState":"PUEBLA","idCity":"21-125","nameCity":"San Gregorio Atzompa","idSuburb":"21-125-1571","nameSuburb":"Chipilo de Francisco Javier Mina","postalCode":"74325"}],"accountholderId":null} 
- </msg>
-<msg timestamp="20240909 10:43:08.365" level="INFO">C:\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-dev.aurumcore.snbxciti.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20240909 10:43:08.366" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240909 10:43:05.956" endtime="20240909 10:43:08.367"/>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkOrganizacion}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:31.638" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div[3]/div/div[1]/div[1]/section/table/tbody/tr/td[2]/a'.</msg>
+<status status="PASS" starttime="20241010 13:44:31.637" endtime="20241010 13:44:31.766"/>
 </kw>
-<status status="PASS" starttime="20240909 10:43:05.309" endtime="20240909 10:43:08.367"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:44:33.767" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:44:31.767" endtime="20241010 13:44:33.767"/>
 </kw>
-<status status="PASS" starttime="20240909 10:43:04.555" endtime="20240909 10:43:08.368"/>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_organizaciones_detalle.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:33.927" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_organizaciones_detalle.png"&gt;&lt;img src="output/captura_organizaciones_detalle.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:33.768" endtime="20241010 13:44:33.928"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:31.583" endtime="20241010 13:44:33.928"/>
+</kw>
+<kw name="Close All Browsers" library="Selenium2Library" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20241010 13:44:33.930" endtime="20241010 13:44:40.538"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:13.537" endtime="20241010 13:44:40.540"/>
 </test>
-<doc>Pruebas DEMO API</doc>
-<status status="PASS" starttime="20240909 10:42:54.905" endtime="20240909 10:43:08.371"/>
+<test id="s1-t3" name="Crea Cuenta Aurum" line="53">
+<kw name="Loging succesfull" library="keywords_loggin" type="SETUP">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20241010 13:44:40.548" level="INFO">Opening browser 'Chrome' to base url 'https://admin-dev.aurumcore.snbxciti.com/'.</msg>
+<status status="PASS" starttime="20241010 13:44:40.547" endtime="20241010 13:44:49.340"/>
+</kw>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<arg>5</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20241010 13:44:49.340" endtime="20241010 13:44:49.343"/>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241010 13:44:49.343" endtime="20241010 13:44:49.435"/>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<arg>${titleT1}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20241010 13:44:49.463" level="INFO">Page title is 'AurumCore'.</msg>
+<status status="PASS" starttime="20241010 13:44:49.435" endtime="20241010 13:44:49.464"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:49.623" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-9.png"&gt;&lt;img src="selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:49.464" endtime="20241010 13:44:49.623"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgAurum}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:44:49.623" endtime="20241010 13:44:49.931"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${ingresar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:49.932" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div/div[2]/div/div/div/button'.</msg>
+<status status="PASS" starttime="20241010 13:44:49.931" endtime="20241010 13:44:52.621"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>WARN</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20241010 13:44:52.624" endtime="20241010 13:44:52.625"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>id=${txtUser}</arg>
+<arg>${user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20241010 13:44:52.626" endtime="20241010 13:44:52.794"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>id=${txtPass}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20241010 13:44:52.795" endtime="20241010 13:44:52.961"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20241010 13:44:52.961" level="INFO">Log level changed from WARN to INFO.</msg>
+<status status="PASS" starttime="20241010 13:44:52.961" endtime="20241010 13:44:52.962"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:53.143" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-10.png"&gt;&lt;img src="selenium-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:52.962" endtime="20241010 13:44:53.143"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${btnIngresar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:53.144" level="INFO">Clicking element 'xpath=//*[@id="loginForm"]/div[7]/button'.</msg>
+<status status="PASS" starttime="20241010 13:44:53.144" endtime="20241010 13:44:53.299"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgInicio}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:44:53.300" endtime="20241010 13:44:55.340"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:55.989" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-11.png"&gt;&lt;img src="selenium-screenshot-11.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:55.341" endtime="20241010 13:44:55.989"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:40.545" endtime="20241010 13:44:55.989"/>
+</kw>
+<kw name="Crea Cliente Aurum" library="keywords_organizaciones">
+<arg>RORR771024AQ8</arg>
+<arg>RORR771024HCLDNF08</arg>
+<kw name="First Name" library="FakerLibrary">
+<var>${name}</var>
+<msg timestamp="20241010 13:44:55.993" level="INFO">${name} = Bernardo</msg>
+<status status="PASS" starttime="20241010 13:44:55.991" endtime="20241010 13:44:55.993"/>
+</kw>
+<kw name="Last Name" library="FakerLibrary">
+<var>${lastName}</var>
+<msg timestamp="20241010 13:44:55.995" level="INFO">${lastName} = Gálvez</msg>
+<status status="PASS" starttime="20241010 13:44:55.994" endtime="20241010 13:44:55.995"/>
+</kw>
+<kw name="Email" library="FakerLibrary">
+<var>${email}</var>
+<msg timestamp="20241010 13:44:55.997" level="INFO">${email} = beatriz74@example.org</msg>
+<status status="PASS" starttime="20241010 13:44:55.995" endtime="20241010 13:44:55.997"/>
+</kw>
+<kw name="Random Number" library="FakerLibrary">
+<var>${phone}</var>
+<arg>10</arg>
+<arg>fix_len=True</arg>
+<doc>Generate a random integer according to the following rules:</doc>
+<msg timestamp="20241010 13:44:55.999" level="INFO">${phone} = 1908409976</msg>
+<status status="PASS" starttime="20241010 13:44:55.997" endtime="20241010 13:44:55.999"/>
+</kw>
+<kw name="Random Number" library="FakerLibrary">
+<var>${ramNum}</var>
+<arg>3</arg>
+<arg>fix_len=True</arg>
+<doc>Generate a random integer according to the following rules:</doc>
+<msg timestamp="20241010 13:44:56.001" level="INFO">${ramNum} = 578</msg>
+<status status="PASS" starttime="20241010 13:44:56.000" endtime="20241010 13:44:56.001"/>
+</kw>
+<kw name="Address" library="FakerLibrary">
+<var>${address}</var>
+<doc>:example: '791 Crist Parks, Sashabury, IL 86039-9874'</doc>
+<msg timestamp="20241010 13:44:56.001" level="INFO">${address} = Prolongación Sur Gamboa 807 Interior 383
+Nueva Senegal, CHIS 33186-4718</msg>
+<status status="PASS" starttime="20241010 13:44:56.001" endtime="20241010 13:44:56.002"/>
+</kw>
+<kw name="Organizaciones" library="keywords_organizaciones">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkOrganizaciones}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:56.005" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[3]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:44:56.003" endtime="20241010 13:44:56.213"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${txtActivo}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:44:56.215" endtime="20241010 13:44:56.458"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_organizaciones.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:56.670" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_organizaciones.png"&gt;&lt;img src="output/captura_organizaciones.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:56.460" endtime="20241010 13:44:56.671"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:56.003" endtime="20241010 13:44:56.671"/>
+</kw>
+<kw name="Detalle Organizacion" library="keywords_organizaciones">
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<arg>${lnkOrganizacion}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20241010 13:44:56.672" endtime="20241010 13:44:56.721"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkOrganizacion}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:56.722" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div[3]/div/div[1]/div[1]/section/table/tbody/tr/td[2]/a'.</msg>
+<status status="PASS" starttime="20241010 13:44:56.721" endtime="20241010 13:44:56.837"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:44:58.838" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:44:56.837" endtime="20241010 13:44:58.838"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_organizaciones_detalle.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:44:58.982" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_organizaciones_detalle.png"&gt;&lt;img src="output/captura_organizaciones_detalle.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:44:58.838" endtime="20241010 13:44:58.983"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:56.672" endtime="20241010 13:44:58.983"/>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<arg>${btnNvoCliente}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20241010 13:44:58.984" level="INFO">Clicking button '//*[@id="root"]/div/div[3]/div/section/div/div/div[2]/a[2]/button'.</msg>
+<status status="PASS" starttime="20241010 13:44:58.983" endtime="20241010 13:44:59.380"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:45:01.382" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:44:59.380" endtime="20241010 13:45:01.382"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtNombreUsuario}</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:01.382" level="INFO">Typing text 'Bernardo' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20241010 13:45:01.382" endtime="20241010 13:45:01.522"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtNombre}</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:01.523" level="INFO">Typing text 'Bernardo' into text field 'name=name'.</msg>
+<status status="PASS" starttime="20241010 13:45:01.522" endtime="20241010 13:45:01.697"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtLastname}</arg>
+<arg>${lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:01.698" level="INFO">Typing text 'Gálvez' into text field 'name=lastName'.</msg>
+<status status="PASS" starttime="20241010 13:45:01.697" endtime="20241010 13:45:01.862"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtSecondLastName}</arg>
+<arg>${lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:01.863" level="INFO">Typing text 'Gálvez' into text field 'name=secondLastName'.</msg>
+<status status="PASS" starttime="20241010 13:45:01.863" endtime="20241010 13:45:02.019"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtEmail}</arg>
+<arg>${ramNum}test@yopmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:02.020" level="INFO">Typing text '578test@yopmail.com' into text field 'name=email'.</msg>
+<status status="PASS" starttime="20241010 13:45:02.019" endtime="20241010 13:45:02.295"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtMsisdn}</arg>
+<arg>${phone}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:02.297" level="INFO">Typing text '1908409976' into text field 'name=msisdn'.</msg>
+<status status="PASS" starttime="20241010 13:45:02.295" endtime="20241010 13:45:02.560"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtDateOfBirth}</arg>
+<arg>22/03/1990</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:02.562" level="INFO">Typing text '22/03/1990' into text field 'name=dateOfBirth'.</msg>
+<status status="PASS" starttime="20241010 13:45:02.561" endtime="20241010 13:45:02.929"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${cldDate}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:02.930" level="INFO">Clicking element 'xpath=//*[@id="account-holder-info-tabs-tabpane-general"]/form/section[2]/div[2]/div[1]/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div[5]'.</msg>
+<status status="PASS" starttime="20241010 13:45:02.929" endtime="20241010 13:45:03.031"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>None</arg>
+<arg>TAB</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20241010 13:45:03.035" level="INFO">Sending key(s) ('TAB',) to page.</msg>
+<msg timestamp="20241010 13:45:03.035" level="INFO">Pressing special key TAB to browser.</msg>
+<msg timestamp="20241010 13:45:03.036" level="INFO">Releasing special key TAB.</msg>
+<status status="PASS" starttime="20241010 13:45:03.033" endtime="20241010 13:45:03.066"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${txtEstate}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:03.068" level="INFO">Clicking element 'xpath=//*[@id="account-holder-info-tabs-tabpane-general"]/form/section[2]/div[2]/div[2]/div/div/div[2]/div'.</msg>
+<status status="PASS" starttime="20241010 13:45:03.067" endtime="20241010 13:45:03.255"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20241010 13:45:03.257" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20241010 13:45:03.257" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20241010 13:45:03.258" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20241010 13:45:03.255" endtime="20241010 13:45:03.305"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${txtEstateCivil}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:03.307" level="INFO">Clicking element 'xpath=//*[@id="account-holder-info-tabs-tabpane-general"]/form/section[2]/div[3]/div[2]/div/div/div[2]/div'.</msg>
+<status status="PASS" starttime="20241010 13:45:03.306" endtime="20241010 13:45:03.422"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20241010 13:45:03.424" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20241010 13:45:03.425" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20241010 13:45:03.476" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20241010 13:45:03.423" endtime="20241010 13:45:03.557"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtAddress}</arg>
+<arg>${address}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:03.558" level="INFO">Typing text 'Prolongación Sur Gamboa 807 Interior 383
+Nueva Senegal, CHIS 33186-4718' into text field 'name=contactAddressLine1'.</msg>
+<status status="PASS" starttime="20241010 13:45:03.557" endtime="20241010 13:45:04.576"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtContacNumber}</arg>
+<arg>8</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:04.577" level="INFO">Typing text '8' into text field 'name=contactExteriorNumber'.</msg>
+<status status="PASS" starttime="20241010 13:45:04.576" endtime="20241010 13:45:04.722"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtCP}</arg>
+<arg>56600</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:04.725" level="INFO">Typing text '56600' into text field 'name=contactAddressZip'.</msg>
+<status status="PASS" starttime="20241010 13:45:04.724" endtime="20241010 13:45:04.915"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtDocumetINE}</arg>
+<arg>11321313215432135212</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:04.917" level="INFO">Typing text '11321313215432135212' into text field 'name=documentNumber'.</msg>
+<status status="PASS" starttime="20241010 13:45:04.916" endtime="20241010 13:45:05.475"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtRFC}</arg>
+<arg>${RFC}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:05.477" level="INFO">Typing text 'RORR771024AQ8' into text field 'name=rfc'.</msg>
+<status status="PASS" starttime="20241010 13:45:05.476" endtime="20241010 13:45:05.737"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtCURP}</arg>
+<arg>${CURP}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:05.739" level="INFO">Typing text 'RORR771024HCLDNF08' into text field 'name=curp'.</msg>
+<status status="PASS" starttime="20241010 13:45:05.737" endtime="20241010 13:45:06.049"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${txtActividad}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:06.051" level="INFO">Clicking element 'xpath=//*[@id="account-holder-info-tabs-tabpane-general"]/form/section[2]/div[12]/div/div/div/div[2]'.</msg>
+<status status="PASS" starttime="20241010 13:45:06.049" endtime="20241010 13:45:06.142"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20241010 13:45:06.143" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20241010 13:45:06.144" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20241010 13:45:06.145" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20241010 13:45:06.142" endtime="20241010 13:45:06.193"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>name=${txtPrimary}</arg>
+<arg>1</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:06.196" level="INFO">Typing text '1' into text field 'name=primaryAccHolderNumber'.</msg>
+<status status="PASS" starttime="20241010 13:45:06.195" endtime="20241010 13:45:06.439"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:06.645" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-12.png"&gt;&lt;img src="selenium-screenshot-12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:06.440" endtime="20241010 13:45:06.645"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${btnGuardar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:06.646" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/div[3]/div/section/div/div/div[2]/button'.</msg>
+<status status="PASS" starttime="20241010 13:45:06.646" endtime="20241010 13:45:06.841"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:45:08.842" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:45:06.841" endtime="20241010 13:45:08.842"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>css=h3.gold-title</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20241010 13:45:08.842" endtime="20241010 13:45:08.856"/>
+</kw>
+<kw name="Element Text Should Be" library="Selenium2Library">
+<arg>css=h3.gold-title</arg>
+<arg>Exito en la operación</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20241010 13:45:08.857" level="INFO">Verifying element 'css=h3.gold-title' contains exact text 'Exito en la operación'.</msg>
+<status status="PASS" starttime="20241010 13:45:08.856" endtime="20241010 13:45:08.881"/>
+</kw>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<arg>Exito en la operación</arg>
+<arg>15s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20241010 13:45:08.881" endtime="20241010 13:45:08.895"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:09.019" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-13.png"&gt;&lt;img src="selenium-screenshot-13.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:08.896" endtime="20241010 13:45:09.020"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:55.991" endtime="20241010 13:45:09.020"/>
+</kw>
+<kw name="Close All Browsers" library="Selenium2Library" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20241010 13:45:09.021" endtime="20241010 13:45:15.723"/>
+</kw>
+<status status="PASS" starttime="20241010 13:44:40.544" endtime="20241010 13:45:15.724"/>
+</test>
+<test id="s1-t4" name="Valida Cuenta" line="57">
+<kw name="Loging succesfull" library="keywords_loggin" type="SETUP">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20241010 13:45:15.729" level="INFO">Opening browser 'Chrome' to base url 'https://admin-dev.aurumcore.snbxciti.com/'.</msg>
+<status status="PASS" starttime="20241010 13:45:15.728" endtime="20241010 13:45:19.636"/>
+</kw>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<arg>5</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20241010 13:45:19.637" endtime="20241010 13:45:19.640"/>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241010 13:45:19.641" endtime="20241010 13:45:24.355"/>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<arg>${titleT1}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20241010 13:45:24.373" level="INFO">Page title is 'AurumCore'.</msg>
+<status status="PASS" starttime="20241010 13:45:24.356" endtime="20241010 13:45:24.373"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:24.535" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-14.png"&gt;&lt;img src="selenium-screenshot-14.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:24.373" endtime="20241010 13:45:24.536"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgAurum}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:45:24.536" endtime="20241010 13:45:24.574"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${ingresar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:24.576" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div/div[2]/div/div/div/button'.</msg>
+<status status="PASS" starttime="20241010 13:45:24.576" endtime="20241010 13:45:27.385"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>WARN</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20241010 13:45:27.386" endtime="20241010 13:45:27.386"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>id=${txtUser}</arg>
+<arg>${user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20241010 13:45:27.387" endtime="20241010 13:45:27.584"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>id=${txtPass}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20241010 13:45:27.585" endtime="20241010 13:45:27.785"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20241010 13:45:27.787" level="INFO">Log level changed from WARN to INFO.</msg>
+<status status="PASS" starttime="20241010 13:45:27.786" endtime="20241010 13:45:27.787"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:28.037" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-15.png"&gt;&lt;img src="selenium-screenshot-15.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:27.788" endtime="20241010 13:45:28.037"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${btnIngresar}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:28.041" level="INFO">Clicking element 'xpath=//*[@id="loginForm"]/div[7]/button'.</msg>
+<status status="PASS" starttime="20241010 13:45:28.038" endtime="20241010 13:45:28.157"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${imgInicio}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:45:28.158" endtime="20241010 13:45:30.081"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:30.316" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-16.png"&gt;&lt;img src="selenium-screenshot-16.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:30.082" endtime="20241010 13:45:30.316"/>
+</kw>
+<status status="PASS" starttime="20241010 13:45:15.727" endtime="20241010 13:45:30.317"/>
+</kw>
+<kw name="Valida Cuenta Bancaria" library="keywords_organizaciones">
+<arg>RORR771024HCLDNF08</arg>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:45:32.321" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:45:30.319" endtime="20241010 13:45:32.321"/>
+</kw>
+<kw name="Organizaciones" library="keywords_organizaciones">
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkOrganizaciones}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:32.323" level="INFO">Clicking element 'xpath=//*[@id="sidenav"]/nav/div[3]/div/a/span'.</msg>
+<status status="PASS" starttime="20241010 13:45:32.322" endtime="20241010 13:45:33.312"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>${txtActivo}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:45:33.312" endtime="20241010 13:45:33.527"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_organizaciones.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:33.682" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_organizaciones.png"&gt;&lt;img src="output/captura_organizaciones.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:33.528" endtime="20241010 13:45:33.682"/>
+</kw>
+<status status="PASS" starttime="20241010 13:45:32.321" endtime="20241010 13:45:33.682"/>
+</kw>
+<kw name="Detalle Organizacion" library="keywords_organizaciones">
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<arg>${lnkOrganizacion}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20241010 13:45:33.683" endtime="20241010 13:45:33.710"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${lnkOrganizacion}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:33.711" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div[3]/div/div[1]/div[1]/section/table/tbody/tr/td[2]/a'.</msg>
+<status status="PASS" starttime="20241010 13:45:33.710" endtime="20241010 13:45:33.983"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:45:35.984" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:45:33.984" endtime="20241010 13:45:35.984"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<arg>output/captura_organizaciones_detalle.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:36.148" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/captura_organizaciones_detalle.png"&gt;&lt;img src="output/captura_organizaciones_detalle.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:35.985" endtime="20241010 13:45:36.149"/>
+</kw>
+<status status="PASS" starttime="20241010 13:45:33.682" endtime="20241010 13:45:36.149"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:45:38.149" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:45:36.149" endtime="20241010 13:45:38.149"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>xpath=${txtBusca}</arg>
+<arg>${CURP}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:38.150" level="INFO">Typing text 'RORR771024HCLDNF08' into text field 'xpath=//*[@id="textSearchField"]'.</msg>
+<status status="PASS" starttime="20241010 13:45:38.149" endtime="20241010 13:45:38.331"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:45:40.333" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:45:38.332" endtime="20241010 13:45:40.333"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:40.466" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-17.png"&gt;&lt;img src="selenium-screenshot-17.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:40.334" endtime="20241010 13:45:40.466"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>xpath=${btnEditaCuenta}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:45:40.466" endtime="20241010 13:45:40.497"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>xpath=${btnEditaCuenta}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:40.498" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div[3]/div/div[1]/div/section/table/tbody/tr/td[8]/a'.</msg>
+<status status="PASS" starttime="20241010 13:45:40.497" endtime="20241010 13:45:40.682"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:40.859" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-18.png"&gt;&lt;img src="selenium-screenshot-18.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:40.682" endtime="20241010 13:45:40.859"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:45:43.860" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20241010 13:45:40.860" endtime="20241010 13:45:43.860"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20241010 13:45:44.005" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-19.png"&gt;&lt;img src="selenium-screenshot-19.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20241010 13:45:43.860" endtime="20241010 13:45:44.005"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<arg>xpath=${txtCuenta}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241010 13:45:44.006" endtime="20241010 13:45:44.029"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241010 13:45:46.032" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241010 13:45:44.030" endtime="20241010 13:45:46.032"/>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<var>${div_text}</var>
+<arg>xpath=${txtCuenta}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20241010 13:45:46.059" level="INFO">${div_text} = Número de cliente: 1-null-278</msg>
+<status status="PASS" starttime="20241010 13:45:46.033" endtime="20241010 13:45:46.059"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>El texto del div es: ${div_text}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20241010 13:45:46.060" level="INFO">El texto del div es: Número de cliente: 1-null-278</msg>
+<status status="PASS" starttime="20241010 13:45:46.059" endtime="20241010 13:45:46.060"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${div_text}</arg>
+<arg>null</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<msg timestamp="20241010 13:45:46.061" level="FAIL">'Número de cliente: 1-null-278' contains 'null'</msg>
+<status status="FAIL" starttime="20241010 13:45:46.061" endtime="20241010 13:45:46.068"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20241010 13:45:46.068" endtime="20241010 13:45:46.068"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20241010 13:45:46.069" endtime="20241010 13:45:46.069"/>
+</kw>
+<status status="FAIL" starttime="20241010 13:45:30.318" endtime="20241010 13:45:46.070"/>
+</kw>
+<kw name="Close All Browsers" library="Selenium2Library" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20241010 13:45:46.070" endtime="20241010 13:45:52.655"/>
+</kw>
+<status status="FAIL" starttime="20241010 13:45:15.726" endtime="20241010 13:45:52.656">'Número de cliente: 1-null-278' contains 'null'</status>
+</test>
+<doc>Pruebas Aurum Portal Administrador</doc>
+<status status="FAIL" starttime="20241010 13:43:02.418" endtime="20241010 13:45:52.658"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="3" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="DemoAPI">DemoAPI</stat>
+<stat pass="3" fail="1" skip="0" id="s1" name="MainTest">MainTest</stat>
 </suite>
 </statistics>
 <errors>
